@@ -129,4 +129,5 @@ app.listen(app.get('port'), function() {
 
 ---
 *Vim Text Editor*
+
 ![alt text](./Images/vi%20Server%20js.JPG)
