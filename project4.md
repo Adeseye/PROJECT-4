@@ -11,7 +11,8 @@ Update firewall : create inbound rule for TCP port 3300
 ### TASK
 
 In this project I'm going to implement a simple Book Register web form using MEAN stack.
-Lets begin:
+
+I will be using MobaXterm to connect to my instance....Lets begin:
 
 Step 1: Install NodeJs
 
@@ -21,9 +22,13 @@ Update ubuntu
 
 <code>sudo apt update</code>
 
+![alt text](./Images/sudo%20update.JPG)
+
 Upgrade ubuntu
 
 <code>sudo apt upgrade</code>
+
+![alt text](./Images/sudo%20apt%20upgrade.JPG)
 
 Add certificates
 
@@ -32,6 +37,12 @@ Add certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 </code>
 
+![alt text](./Images/add%20certificates.JPG)
+
 Install NodeJS
 
 <code>sudo apt install -y nodejs</code>
+
+![alt text](./Images/install%20Node.JS)
+
+
