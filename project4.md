@@ -14,7 +14,7 @@ In this project I'm going to implement a simple Book Register web form using MEA
 
 I will be using MobaXterm to connect to my instance....Lets begin:
 
-### STEP 1: Install NodeJs
+### STEP 1: INSTALL NodeJs
 
 Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js is used in this tutorial to set up the Express routes and AngularJS controllers.
 
@@ -199,3 +199,107 @@ module.exports = function(app) {
 *vim routes.js* 
 
 ![alt text](./Images/vi%20routes.JPG)
+
+
+In the ‘apps’ folder, create a folder named models
+
+<code>mkdir models && cd models</code>
+Create a file named book.js
+
+<code>vi book.js</code>
+
+Copy and paste the code below into ‘book.js’
+
+<code>
+var mongoose = require('mongoose');
+var dbHost = 'mongodb://localhost:27017/test';
+mongoose.connect(dbHost);
+mongoose.connection;
+mongoose.set('debug', true);
+var bookSchema = mongoose.Schema( {
+  name: String,
+  isbn: {type: String, index: true},
+  author: String,
+  pages: Number
+});
+var Book = mongoose.model('Book', bookSchema);
+module.exports = mongoose.model('Book', bookSchema);
+</code>
+
+---
+![alt text](./Images/vi%20book.JPG)
+
+### STEP 4 – Access the routes with AngularJS
+
+AngularJS provides a web framework for creating dynamic views in your web applications. In this tutorial, we use AngularJS to connect our web page with Express and perform actions on our book register.
+
+Change the directory back to ‘Books’
+
+<code>cd ../..</code>
+
+Create a folder named public
+
+<code>mkdir public && cd public</code>
+
+![alt text](./Images/vi%20scripts%20js.JPG)
+
+Add a file named script.js
+
+<code>vi script.js</code>
+
+Copy and paste the Code below (controller configuration defined) into the script.js file.
+
+<code>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http( {
+    method: 'GET',
+    url: '/book'
+  }).then(function successCallback(response) {
+    $scope.books = response.data;
+  }, function errorCallback(response) {
+    console.log('Error: ' + response);
+  });
+  $scope.del_book = function(book) {
+    $http( {
+      method: 'DELETE',
+      url: '/book/:isbn',
+      params: {'isbn': book.isbn}
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(response) {
+      console.log('Error: ' + response);
+    });
+  };
+  $scope.add_book = function() {
+    var body = '{ "name": "' + $scope.Name + 
+    '", "isbn": "' + $scope.Isbn +
+    '", "author": "' + $scope.Author + 
+    '", "pages": "' + $scope.Pages + '" }';
+    $http({
+      method: 'POST',
+      url: '/book',
+      data: body
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(response) {
+      console.log('Error: ' + response);
+    });
+  };
+});
+
+</code>
+
+---
+
+![alt text](./Images/vi%20script%20code.JPG)
+
+
+In public folder, create a file named index.html;
+
+<code>vi index.html</code>
+
+Copy and paste the code below into index.html file.
+
+![alt text](./Images/html%20code.JPG)
+
