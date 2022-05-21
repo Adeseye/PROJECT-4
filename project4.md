@@ -303,3 +303,43 @@ Copy and paste the code below into index.html file.
 
 ![alt text](./Images/html%20code.JPG)
 
+*vi index.html*
+
+![alt text](./Images/vi%20index.JPG)
+
+Change the directory back up to Books
+
+<code>cd ..</code>
+
+Start the server by running this command:
+
+<code>node server.js</code>
+
+![alt text](./Images/node%20server%20js.JPG)
+
+The server is now up and running, we can connect it via port 3300. You can launch a separate Putty or SSH console to test what curl command returns locally.
+
+I would be using Microsoft Windows Terminal to SSH to instance 
+
+
+<code>curl -s http://localhost:3300</code>
+
+![alt text](./Images/curl%20command.JPG)
+
+It shall return an HTML page, which difficult to read in the CLI, but we can also try and access it from the Internet.
+
+For this – you need to open TCP port 3300 in your AWS Web Console for your EC2 Instance.
+
+![alt text](./Images/inbound%20rule%203300.JPG)
+
+Now you can access our Book Register web application from the Internet with a browser using Public IP address or Public DNS name.
+
+<code>https://http://3.8.186.42:3300/</code> into browser address.
+
+Web Book Register Application
+
+![alt text](./Images/Web%20book%20register.JPG)
+
+I have successfully created a simple Book Register! 
+
+END...
