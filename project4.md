@@ -2,7 +2,7 @@
 
 The last 3 projects I deployed LAMP,LEMP and MEARN Web stack. In this project I will be deploying MEAN stack on to Ubuntu Server.
 
-### Prerequisites:
+### PREREQUISITES:
 AWS Free tier account
 EC2 instance of t2.nano with Ubuntu Server 20.04LTS(HVM) image. 
 Installing and configuring NodeJS, MongoDB, Express JS.
