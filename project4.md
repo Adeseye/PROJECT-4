@@ -65,3 +65,52 @@ echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/
 ---
 
 ![alt text](./Images/Json%20code.JPG)
+
+Install MongoDB
+
+<code>sudo apt install -y mongodb</code>
+
+Start The server
+
+<code>sudo service mongodb start</code>
+
+Verify that the service is up and running
+
+<code>sudo systemctl status mongodb</code>
+
+Install npm – Node package manager.
+
+<code>sudo apt install -y npm</code>
+
+Install body-parser package
+
+We need ‘body-parser’ package to help us process JSON files passed in requests to the server.
+
+<code>sudo npm install body-parser</code>
+
+Create a folder named ‘Books’
+
+<code>mkdir Books && cd Books</code>
+
+In the Books directory, Initialize npm project
+
+<code>npm init</code>
+
+Add a file to it named server.js
+
+<code>vi server.js</code>
+
+Copy and paste the web server code below into the server.js file.
+
+<code>
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
+require('./apps/routes')(app);
+app.set('port', 3300);
+app.listen(app.get('port'), function() {
+    console.log('Server up: http://localhost:' + app.get('port'));
+});
+</code>
