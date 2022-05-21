@@ -1,4 +1,4 @@
-### MEAN STACK DEPLOYMENT TO UBUNTU IN AWS
+<center>### MEAN STACK DEPLOYMENT TO UBUNTU IN AWS</center>
 
 The last 3 projects I deployed LAMP,LEMP and MEARN Web stack. In this project I will be deploying MEAN stack on to Ubuntu Server.
 
