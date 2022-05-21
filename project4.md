@@ -14,7 +14,7 @@ In this project I'm going to implement a simple Book Register web form using MEA
 
 I will be using MobaXterm to connect to my instance....Lets begin:
 
-Step 1: Install NodeJs
+### STEP 1: Install NodeJs
 
 Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js is used in this tutorial to set up the Express routes and AngularJS controllers.
 
@@ -45,7 +45,7 @@ Install NodeJS
 
 ![alt text](./Images/install%20Node.JS)
 
-Step 2: Install MongoDB
+### STEPS 2: Install MongoDB
 
 MongoDB stores data in flexible, JSON-like documents. Fields in a database can vary from document to document and data structure can be changed over time. 
 
@@ -131,3 +131,71 @@ app.listen(app.get('port'), function() {
 *Vim Text Editor*
 
 ![alt text](./Images/vi%20Server%20js.JPG)
+
+### STEP 3: INSTALLING EXPRESS AND SET UP ROUTES TO THE SERVER
+
+I'm going to install Express and setup routes to the server. Express is a minimal and flexible Node.js web application framework that provides feature for web and mobile applications.
+
+Express will be used to pass book information to and from MongoDB database. Mongoose package which provides a straight-forward, schema-based solution to model your application data. We will use Mongoose to establish a schema for the database to store data of our book register.
+
+<code>sudo npm install express mongoose</code>
+
+![alt text](./Images/sudo%20npm%20install%20express%20mongoose.JPG)
+
+In ‘Books’ folder, create a folder named apps
+
+<code>mkdir apps && cd apps</code>
+
+![alt text](./Images/mkdir%20apps%20%26%20cd%20apps.JPG)
+
+Create a file named routes.js
+
+<code>vi routes.js</code>
+
+Copy and paste the code below into routes.js
+
+<code>
+var Book = require('./models/book');
+module.exports = function(app) {
+  app.get('/book', function(req, res) {
+    Book.find({}, function(err, result) {
+      if ( err ) throw err;
+      res.json(result);
+    });
+  }); 
+  app.post('/book', function(req, res) {
+    var book = new Book( {
+      name:req.body.name,
+      isbn:req.body.isbn,
+      author:req.body.author,
+      pages:req.body.pages
+    });
+    book.save(function(err, result) {
+      if ( err ) throw err;
+      res.json( {
+        message:"Successfully added book",
+        book:result
+      });
+    });
+  });
+  app.delete("/book/:isbn", function(req, res) {
+    Book.findOneAndRemove(req.query, function(err, result) {
+      if ( err ) throw err;
+      res.json( {
+        message: "Successfully deleted the book",
+        book: result
+      });
+    });
+  });
+  var path = require('path');
+  app.get('*', function(req, res) {
+    res.sendfile(path.join(__dirname + '/public', 'index.html'));
+  });
+};
+</code>
+
+---
+
+*vim routes.js* 
+
+![alt text](./Images/vi%20routes.JPG)
