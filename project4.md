@@ -70,6 +70,8 @@ Install MongoDB
 
 <code>sudo apt install -y mongodb</code>
 
+![alt text](./Images/install%20Mongodb.JPG)
+
 Start The server
 
 <code>sudo service mongodb start</code>
@@ -78,15 +80,21 @@ Verify that the service is up and running
 
 <code>sudo systemctl status mongodb</code>
 
+![alt text](./Images/start%20service%20and%20status%20of%20servoce.JPG)
+
 Install npm – Node package manager.
 
 <code>sudo apt install -y npm</code>
+
+![alt text](./Images/npm%20install.JPG)
 
 Install body-parser package
 
 We need ‘body-parser’ package to help us process JSON files passed in requests to the server.
 
 <code>sudo npm install body-parser</code>
+
+![alt text](./Images/body-parser.JPG)
 
 Create a folder named ‘Books’
 
@@ -95,6 +103,10 @@ Create a folder named ‘Books’
 In the Books directory, Initialize npm project
 
 <code>npm init</code>
+
+![alt text](./Images/npm%20init.JPG)
+
+Give the book a title, enter an entry point, Author name and License. Type Yes and hit enter key to proceed
 
 Add a file to it named server.js
 
@@ -114,3 +126,7 @@ app.listen(app.get('port'), function() {
     console.log('Server up: http://localhost:' + app.get('port'));
 });
 </code>
+
+---
+*Vim Text Editor*
+![alt text](./Images/vi%20Server%20js.JPG)
